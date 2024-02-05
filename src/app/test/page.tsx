@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 async function getData() {
   const response = await fetch(
     `https://api.bakoo.az/v2/ru/filter?time=${Date.now()}`
@@ -13,14 +11,5 @@ async function getData() {
 export default async function Home() {
   const data = await getData();
 
-  return (
-    <main>
-      <Link href="/test">Test</Link>
-      <br />
-      <br />
-      <br />
-      <br />
-      {JSON.stringify(data.info)}
-    </main>
-  );
+  return <main>{JSON.stringify(data.info)}</main>;
 }
