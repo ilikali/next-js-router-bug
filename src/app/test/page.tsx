@@ -4,7 +4,10 @@ async function getData() {
   const cookiesConcent = cookies();
   const headersContent = headers();
   const response = await fetch(
-    `https://api.bakoo.az/v2/ru/filter?time=${Date.now()}`
+    `https://api.bakoo.az/v2/ru/filter?time=${Date.now()}`,
+    {
+      cache: "reload",
+    }
   );
   return {
     info: await response.json(),

@@ -1,11 +1,10 @@
 import { cookies, headers } from "next/headers";
 import Link from "next/link";
+import server from "./service/server";
 
 async function getData() {
-  const cookiesConcent = cookies();
-  const headersContent = headers();
-  const response = await fetch(
-    `https://api.bakoo.az/v2/ru/az/folders?brand=bmw&model=x5&page=1&per_page=20&time=${Date.now()}`
+  const response = await server(
+    `/ru/elan?category=cars&page=1&per_page=4&vip=1&sort=random`
   );
   return {
     info: await response.json(),
